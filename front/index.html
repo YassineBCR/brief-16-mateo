@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Search</title>
+</head>
+<body>
+    <h1>Search Weather by City</h1>
+    <input type="text" id="cityName" placeholder="Enter city name">
+    <button onclick="searchWeather()">Search</button>
+    <div id="weatherResults"></div>
+
+    <script>
+        async function searchWeather() {
+            const cityName = document.getElementById('cityName').value;
+            const response = await fetch(`http://127.0.0.1:8010/weather/${cityName}`);
+            const data = await response.json();
+            document.getElementById('weatherResults').innerHTML = JSON.stringify(data, null, 2);
+        }
+    </script>
+    <!-- Déclaration du script app.js -->
+    <script src="app.js"></script>
+</body>
+</html>
